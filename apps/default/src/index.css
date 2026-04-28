@@ -1,0 +1,313 @@
+/* Tailwind CSS v3 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Apply dark mode by default immediately to avoid flash */
+html { color-scheme: dark; }
+
+@layer base {
+  /* ── CryptoVerse AI Design System ──────────────────────────────────────────
+   *
+   *  Primary (dark blue):   #0A1929  → hsl(210 62% 10%)
+   *  Gold accent:           #FFD700  → hsl(51 100% 50%)
+   *  Success green:         #00C853  → hsl(145 100% 39%)
+   *  Danger red:            #FF3B30  → hsl(3 100% 59%)
+   *  Warning orange:        #FF9500  → hsl(35 100% 50%)
+   *  Text white:            #FFFFFF
+   *  Text gray:             #9CA3AF  → hsl(220 9% 66%)
+   *
+   *  Light mode: lighter version of same palette.
+   * ────────────────────────────────────────────────────────────────────────── */
+  :root {
+    /* backgrounds */
+    --background: 210 30% 96%;
+    --foreground: 210 62% 8%;
+
+    /* card surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 210 62% 8%;
+
+    /* popovers */
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 62% 8%;
+
+    /* primary = gold (on light bg) */
+    --primary: 51 100% 40%;
+    --primary-foreground: 210 62% 5%;
+
+    /* secondary surface */
+    --secondary: 210 20% 90%;
+    --secondary-foreground: 210 30% 20%;
+
+    /* muted */
+    --muted: 210 20% 88%;
+    --muted-foreground: 220 9% 46%;
+
+    /* accent = gold tint */
+    --accent: 51 100% 90%;
+    --accent-foreground: 51 100% 20%;
+
+    /* semantic */
+    --destructive: 3 100% 59%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 20% 82%;
+    --input:  210 20% 82%;
+    --ring:   51 100% 50%;
+    --radius: 0.625rem;
+
+    /* ── CryptoVerse semantic tokens (always available) ── */
+    --cv-gold:     51 100% 50%;       /* #FFD700 */
+    --cv-success:  145 100% 39%;      /* #00C853 */
+    --cv-danger:   3   100% 59%;      /* #FF3B30 */
+    --cv-warning:  35  100% 50%;      /* #FF9500 */
+    --cv-navy:     210 62% 10%;       /* #0A1929 */
+    --cv-navy-mid: 210 45% 14%;       /* panel bg  */
+    --cv-navy-hi:  210 35% 19%;       /* hover     */
+    --cv-text:     0 0% 100%;         /* #FFFFFF   */
+    --cv-muted:    220 9% 66%;        /* #9CA3AF   */
+
+    /* chart */
+    --cv-chart-equity:   51  100% 50%;  /* gold   */
+    --cv-chart-dd:       3   100% 59%;  /* red    */
+    --cv-chart-pos:      145 100% 39%;  /* green  */
+    --cv-chart-neg:      3   100% 59%;  /* red    */
+  }
+
+  .dark {
+    /* ── Dark mode = CryptoVerse native palette ──────────────────────────── */
+
+    /* base backgrounds — dark navy */
+    --background: 210 62% 6%;         /* #020D18 */
+    --foreground: 0 0% 96%;           /* near-white */
+
+    /* card slightly lighter than bg */
+    --card: 210 55% 9%;               /* #0A1929 */
+    --card-foreground: 0 0% 94%;
+
+    /* popovers */
+    --popover: 210 55% 7%;
+    --popover-foreground: 220 9% 66%;
+
+    /* primary = gold */
+    --primary: 51 100% 50%;           /* #FFD700 */
+    --primary-foreground: 210 62% 5%; /* dark navy text on gold */
+
+    /* secondary panel surfaces */
+    --secondary: 210 45% 14%;         /* #0F2030 */
+    --secondary-foreground: 0 0% 88%;
+
+    /* muted */
+    --muted: 210 40% 12%;
+    --muted-foreground: 220 9% 54%;   /* #9CA3AF */
+
+    /* accent = gold tint on dark */
+    --accent: 51 60% 18%;
+    --accent-foreground: 51 100% 75%;
+
+    /* semantic */
+    --destructive: 3 85% 45%;         /* #FF3B30 muted for dark bg */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 210 40% 16%;
+    --input:  210 40% 16%;
+    --ring:   51 100% 50%;            /* gold focus ring */
+
+    /* semantic tokens — same as light */
+    --cv-gold:     51 100% 50%;
+    --cv-success:  145 100% 39%;
+    --cv-danger:   3   100% 59%;
+    --cv-warning:  35  100% 50%;
+    --cv-navy:     210 62% 10%;
+    --cv-navy-mid: 210 45% 14%;
+    --cv-navy-hi:  210 35% 19%;
+    --cv-text:     0 0% 100%;
+    --cv-muted:    220 9% 66%;
+
+    /* chart */
+    --cv-chart-equity:   51  100% 50%;
+    --cv-chart-dd:       3   100% 59%;
+    --cv-chart-pos:      145 100% 39%;
+    --cv-chart-neg:      3   100% 59%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+:root {
+  /* Sidebar tokens (kept compatible) */
+  --sidebar: hsl(210 30% 95%);
+  --sidebar-foreground: hsl(210 62% 8%);
+  --sidebar-primary: hsl(51 100% 40%);
+  --sidebar-primary-foreground: hsl(210 62% 5%);
+  --sidebar-accent: hsl(210 20% 90%);
+  --sidebar-accent-foreground: hsl(210 30% 20%);
+  --sidebar-border: hsl(210 20% 82%);
+  --sidebar-ring: hsl(51 100% 50%);
+}
+
+.dark {
+  --sidebar: hsl(210 55% 9%);
+  --sidebar-foreground: hsl(0 0% 92%);
+  --sidebar-primary: hsl(51 100% 50%);
+  --sidebar-primary-foreground: hsl(210 62% 5%);
+  --sidebar-accent: hsl(210 45% 14%);
+  --sidebar-accent-foreground: hsl(0 0% 88%);
+  --sidebar-border: hsl(210 40% 16%);
+  --sidebar-ring: hsl(51 100% 50%);
+}
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Bell ring for active price alerts */
+@keyframes bell-ring {
+  0%, 100% { transform: rotate(0deg); }
+  10%       { transform: rotate(14deg); }
+  20%       { transform: rotate(-12deg); }
+  30%       { transform: rotate(10deg); }
+  40%       { transform: rotate(-8deg); }
+  50%       { transform: rotate(6deg); }
+  60%       { transform: rotate(-4deg); }
+  70%       { transform: rotate(2deg); }
+  80%       { transform: rotate(0deg); }
+}
+
+/* OTP wrong-code shake */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  15%       { transform: translateX(-6px); }
+  30%       { transform: translateX(6px); }
+  45%       { transform: translateX(-4px); }
+  60%       { transform: translateX(4px); }
+  75%       { transform: translateX(-2px); }
+  90%       { transform: translateX(2px); }
+}
+.shake {
+  animation: shake 0.45s ease-in-out;
+}
+
+/* Match simulation shimmer sweep */
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(200%);  }
+}
+
+/* Full screen spinner styles */
+.genesis__spinner-container {
+  position: fixed;
+  inset: 0;
+  background: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.genesis__spinner-ring {
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid transparent;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  animation: genesis__spin 1s linear infinite;
+}
+
+@keyframes genesis__spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .genesis__spinner-ring {
+    animation: none;
+    border-top-color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* ── CryptoVerse AI — Chart Color Tokens ─────────────────────────────────────
+ *
+ *  Used by Recharts & inline styles throughout the Backtest Engine.
+ *  Exposed as CSS custom props so they work in both light and dark contexts.
+ *
+ *  --cv-color-equity    Gold    #FFD700   equity curve stroke
+ *  --cv-color-dd        Red     #FF3B30   drawdown fill (30% alpha applied inline)
+ *  --cv-color-pos       Green   #00C853   positive return bars / text
+ *  --cv-color-neg       Red     #FF3B30   negative return bars / text
+ *  --cv-color-navy      Navy    #0A1929   panel / card background
+ *  --cv-color-gold-dim  Gold50  #7D6800   muted gold for secondary labels
+ * ────────────────────────────────────────────────────────────────────────── */
+:root,
+.dark {
+  --cv-color-equity:   #FFD700;
+  --cv-color-dd:       #FF3B30;
+  --cv-color-pos:      #00C853;
+  --cv-color-neg:      #FF3B30;
+  --cv-color-navy:     #0A1929;
+  --cv-color-navy-mid: #0F2030;
+  --cv-color-navy-hi:  #1A3145;
+  --cv-color-gold-dim: #B89A00;
+  --cv-color-warning:  #FF9500;
+  --cv-color-white:    #FFFFFF;
+  --cv-color-gray:     #9CA3AF;
+}
+
+/* Gold glow utility — used on equity curve highlight, run button */
+.cv-glow-gold {
+  box-shadow: 0 0 18px 2px rgba(255, 215, 0, 0.22),
+              0 0 4px  1px rgba(255, 215, 0, 0.14);
+}
+.cv-glow-green {
+  box-shadow: 0 0 14px 2px rgba(0, 200, 83, 0.18),
+              0 0 4px  1px rgba(0, 200, 83, 0.12);
+}
+.cv-glow-red {
+  box-shadow: 0 0 14px 2px rgba(255, 59, 48, 0.18),
+              0 0 4px  1px rgba(255, 59, 48, 0.12);
+}
+
+/* Backtest panel navy background helper */
+.cv-bg-navy     { background-color: var(--cv-color-navy);     }
+.cv-bg-navy-mid { background-color: var(--cv-color-navy-mid); }
+.cv-bg-navy-hi  { background-color: var(--cv-color-navy-hi);  }
+
+/* Gold pulsing border for "running" state */
+@keyframes cv-gold-pulse-border {
+  0%, 100% { border-color: rgba(255, 215, 0, 0.25); }
+  50%       { border-color: rgba(255, 215, 0, 0.55); }
+}
+.cv-border-pulse-gold {
+  animation: cv-gold-pulse-border 2s ease-in-out infinite;
+}
+
+/* Ticker tape shimmer for loading bars */
+@keyframes cv-shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position:  400px 0; }
+}
+.cv-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255,215,0,0.04) 25%,
+    rgba(255,215,0,0.10) 50%,
+    rgba(255,215,0,0.04) 75%
+  );
+  background-size: 400px 100%;
+  animation: cv-shimmer 1.6s ease-in-out infinite;
+}

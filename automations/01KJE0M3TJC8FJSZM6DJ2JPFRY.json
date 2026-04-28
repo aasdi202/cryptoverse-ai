@@ -1,0 +1,67 @@
+{
+  "version": "2",
+  "flowTitle": "CryptoPlay — Send OTP Email",
+  "trigger": {
+    "valid": true,
+    "type": "WEBHOOK",
+    "settings": {
+      "input": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Input for code"
+          },
+          "email": {
+            "type": "string",
+            "description": "Input for email"
+          },
+          "purpose": {
+            "type": "string",
+            "description": "Input for purpose"
+          },
+          "displayName": {
+            "type": "string",
+            "description": "Input for displayName"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "actions": [
+    {
+      "name": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "valid": false,
+      "displayName": "Send OTP Email via Gmail",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-piece-gmail",
+        "pieceVersion": "1.0.0",
+        "actionName": "sendEmail",
+        "input": {
+          "to": "{{ trigger[\"body\"][\"email\"] }}",
+          "subject": "{{ trigger[\"body\"][\"purpose\"] == \"reset\" ? \"🔐 CryptoPlay — Password Reset Code\" : \"✅ CryptoPlay — Email Verification Code\" }}",
+          "bodyHtml": "<!DOCTYPE html><html><head><meta charset='UTF-8'><style>body{margin:0;padding:0;background:#0d1117;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}table{border-collapse:collapse}.wrapper{background:#0d1117;padding:40px 20px}.card{background:#111827;border:1px solid #1f2937;border-radius:16px;padding:40px;max-width:480px;margin:0 auto}.logo-row{text-align:center;margin-bottom:32px}.logo{display:inline-flex;align-items:center;gap:12px}.logo-icon{width:48px;height:48px;background:linear-gradient(135deg,#f59e0b,#f97316);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px}.app-name{color:#ffffff;font-size:20px;font-weight:700;letter-spacing:-0.5px}.tagline{color:#f59e0b;font-size:12px}.greeting{color:#e5e7eb;font-size:16px;margin-bottom:8px}.body-text{color:#9ca3af;font-size:14px;line-height:1.6;margin-bottom:28px}.code-box{background:#1f2937;border:2px solid #f59e0b40;border-radius:12px;padding:24px;text-align:center;margin-bottom:24px}.code-label{color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}.code{color:#f59e0b;font-size:40px;font-weight:800;letter-spacing:12px;font-family:'Courier New',monospace}.expiry{color:#6b7280;font-size:12px;margin-top:8px}.warning{background:#1f2937;border-radius:8px;padding:12px 16px;margin-bottom:24px}.warning-text{color:#6b7280;font-size:12px;line-height:1.5}.footer{text-align:center;color:#374151;font-size:11px;margin-top:24px;padding-top:24px;border-top:1px solid #1f2937}</style></head><body><div class='wrapper'><div class='card'><div class='logo-row'><div style='text-align:center'><div style='display:inline-block;width:48px;height:48px;background:linear-gradient(135deg,#f59e0b,#f97316);border-radius:12px;font-size:28px;line-height:48px;text-align:center;margin-bottom:8px'>⚡</div><div style='color:#ffffff;font-size:20px;font-weight:700'>CryptoPlay AI</div><div style='color:#f59e0b;font-size:12px'>Trade. Learn. Compete.</div></div></div><div class='greeting'>Hello{{ trigger[\"body\"][\"displayName\"] != \"\" ? \", \" : \"\" }}{{ trigger[\"body\"][\"displayName\"] }} 👋</div><div class='body-text'>{{ trigger[\"body\"][\"purpose\"] == \"reset\" ? \"We received a request to reset your CryptoPlay password. Use the code below to continue. If you did not request this, you can safely ignore this email.\" : \"Thanks for joining CryptoPlay! Please verify your email address using the code below to activate your account and start trading.\" }}</div><div class='code-box'><div class='code-label'>Your verification code</div><div class='code'>{{ trigger[\"body\"][\"code\"] }}</div><div class='expiry'>⏱ Expires in 5 minutes</div></div><div class='warning'><div class='warning-text'>🔒 Never share this code with anyone. CryptoPlay will never ask for your code via phone or chat.</div></div><div class='footer'>© 2025 CryptoPlay AI · Trade smarter, not harder<br>This is an automated message, please do not reply.</div></div></div></body></html>"
+        }
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "type": "http_response",
+      "body": {
+        "type": "json",
+        "data": {
+          "type": "basic",
+          "payload": [
+            {
+              "ok": "true"
+            }
+          ]
+        }
+      },
+      "key": "trigger"
+    }
+  ]
+}

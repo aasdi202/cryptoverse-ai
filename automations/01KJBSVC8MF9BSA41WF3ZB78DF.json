@@ -1,0 +1,8 @@
+{
+  "version": "2",
+  "flowTitle": "Risk Detection Monitor",
+  "trigger": {
+    "type": "EMPTY"
+  },
+  "actions": []
+}
