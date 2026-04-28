@@ -5,6 +5,7 @@ import {
   Activity, BookOpen, Trophy, Swords, UserCircle,
   Menu, LogOut, Bell, Sun, Moon, BarChart2, BarChart3, Globe, FlaskConical, Bot, ShoppingBag, RefreshCw, Link2, CalendarDays, Plug,
 } from 'lucide-react';
+import { DashboardPage }         from './components/DashboardPage';
 import { Dashboard }             from './components/Dashboard';
 import { AgentChat }             from './components/AgentChat';
 import { CryptoVerseLogo }       from './components/CryptoVerseLogo';
@@ -507,7 +508,8 @@ export default function App() {
             <WelcomeGuide />
             <Layout>
               <Routes>
-                <Route path="/" element={<Dashboard />} />
+                <Route path="/" element={<DashboardPage />} />
+                <Route path="/trading" element={<Dashboard />} />
                 <Route path="/portfolio"   element={<div className="flex-1 p-6 pb-24 lg:pb-6 overflow-y-auto bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/5 via-background to-background"><div className="max-w-7xl mx-auto"><Portfolio /></div></div>} />
                 <Route path="/bots"        element={<div className="flex-1 flex flex-col overflow-hidden pb-16 lg:pb-0"><BotsPage /></div>} />
                 <Route path="/bots/:id"    element={<div className="flex-1 flex flex-col overflow-hidden pb-16 lg:pb-0 relative"><BotDetailsPage /></div>} />
