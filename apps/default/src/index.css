@@ -311,3 +311,23 @@ html { color-scheme: dark; }
   background-size: 400px 100%;
   animation: cv-shimmer 1.6s ease-in-out infinite;
 }
+/* Force fix for sidebar navigation items positioning */
+.sidebar-nav-item {
+  position: relative !important;
+  z-index: 10 !important;
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+/* Ensure all sidebar links behave consistently */
+aside a, aside button {
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+
+/* Fix any overlapping issues with the Sentiment widget */
+.hidden.lg\:block + div {
+  clear: both;
+}
